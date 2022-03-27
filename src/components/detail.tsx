@@ -5,10 +5,14 @@ import { RootState } from '../redux/reducers';
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
 import { AiOutlineDownload } from 'react-icons/ai';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { useState } from 'react';
+import DeleteModal from './deleteModal';
 
 const Detail = () => {
   const deipatch = useDispatch();
   const navigate = useNavigate();
+  const [toggle, setToggle] = useState<boolean>(false);
+
   const DataList: any = useSelector(
     (state: RootState) => state.DummyData.data.renderings
   );
@@ -29,6 +33,9 @@ const Detail = () => {
     }
   };
 
+  const onToggle = () => {
+    setToggle((prev) => !prev);
+  };
   return (
     <>
       <Top>
@@ -37,10 +44,11 @@ const Detail = () => {
           <AiOutlineDownload />
           다운로드
         </DownloadBtn>
-        <DeleteBtn>
+        <DeleteBtn onClick={onToggle}>
           <RiDeleteBinLine />
         </DeleteBtn>
       </Top>
+      {toggle && <DeleteModal Toggle={onToggle} />}
       <ImgBox>
         <Img src={clickedData?._id} alt='상세이미지' />
       </ImgBox>
