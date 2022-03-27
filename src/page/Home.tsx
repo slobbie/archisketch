@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Data from '../data/dummyData.json';
@@ -7,14 +8,19 @@ interface DummyDatamodel {
 }
 
 const Home = () => {
+  const [data, SetData] = useState(Data);
+  useEffect(() => {
+    SetData(Data);
+  }, []);
+
   return (
     <Section>
       <Top>
-        <Span> 개의 랜더샷</Span>
+        <Span>{data.renderings.length}개의 랜더샷</Span>
         <Title>갤러리</Title>
       </Top>
       <ImgContainer>
-        {Data.renderings.map((item: DummyDatamodel, i) => {
+        {data.renderings.map((item: DummyDatamodel, i) => {
           return (
             <Link to={`/detail/${i}`} key={i}>
               <Box>
