@@ -3,7 +3,7 @@
 1. `clone` the repository,
 
 ```
-
+https://github.com/slobbie/archisketch.git
 ```
 
 2. `yarn` dependencies,
