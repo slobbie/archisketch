@@ -1,8 +1,8 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
-import Nav from './layout/Nav';
-import Home from './page/Home';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+import Nav from "./layout/Nav";
+import Home from "./page/Home";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <GlobalStyle />
       <Nav />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   );

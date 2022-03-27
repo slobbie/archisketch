@@ -1,4 +1,4 @@
-import { REMOVE } from './../action';
+import { REMOVE } from "./../action";
 const initialState: any = {
   id: Number,
 };

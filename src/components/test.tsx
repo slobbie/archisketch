@@ -1,4 +1,4 @@
-const Text = () => {
+const Detail = () => {
   return (
     <div>
       <h1>1</h1>
@@ -6,4 +6,4 @@ const Text = () => {
   );
 };
 
-export default Text;
+export default Detail;
