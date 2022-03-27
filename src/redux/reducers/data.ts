@@ -7,7 +7,6 @@ const initialState: any = {
 export const DummyData = (state = initialState, action: any) => {
   switch (action.type) {
     case REMOVE: {
-      console.log(action);
       return {
         ...state,
       };
