@@ -1,9 +1,10 @@
-import { REMOVE } from "./../action";
+import { REMOVE } from '../action';
+import Data from '../../data/dummyData.json';
 const initialState: any = {
-  id: Number,
+  data: Data,
 };
 
-export const review = (state = initialState, action: any) => {
+export const DummyData = (state = initialState, action: any) => {
   switch (action.type) {
     case REMOVE: {
       console.log(action);

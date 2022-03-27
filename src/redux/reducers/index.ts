@@ -1,9 +1,9 @@
-import { review } from "./review";
+import { DummyData } from './data';
 
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-  review,
+  DummyData,
 });
 
 export default rootReducer;

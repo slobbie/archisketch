@@ -1,22 +1,28 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
-import Nav from "./layout/Nav";
-import Home from "./page/Home";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import styled, { createGlobalStyle } from 'styled-components';
+import Detail from './components/detail';
+import Nav from './layout/Nav';
+import Home from './page/Home';
 
 function App() {
   return (
-    <div>
+    <Section>
       <GlobalStyle />
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/detail/*' element={<Detail />} />
       </Routes>
-    </div>
+    </Section>
   );
 }
 
 export default App;
+const Section = styled.section`
+  width: 100%;
+  height: 100vh;
+`;
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
