@@ -1,26 +1,30 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useMatch, useNavigate } from 'react-router-dom';
+import { useMatch, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { RootState } from '../redux/reducers';
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
 import { AiOutlineDownload } from 'react-icons/ai';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useState } from 'react';
 import DeleteModal from './deleteModal';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
+import React from 'react';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { DummyData, Update } from '../atiom';
 
 const Detail = () => {
-  const deipatch = useDispatch();
   const navigate = useNavigate();
   const [toggle, setToggle] = useState<boolean>(false);
-
-  const DataList: any = useSelector(
-    (state: RootState) => state.DummyData.data.renderings
-  );
+  const galleryData = useRecoilValue<any>(Update);
+  // const data: any = useRecoilValue(DummyData);
+  const SetData = useSetRecoilState(DummyData);
+  const [data, setData] = useRecoilState<any>(DummyData);
   const matchId: any = useMatch('/detail/:i');
 
   const clickedData =
     matchId?.params.i &&
-    DataList?.find((item: any, i: any) => i + '' === matchId.params.i);
+    galleryData.renderings?.find(
+      (item: any, i: any) => i + '' === matchId.params.i
+    );
 
   const onNext = () => {
     matchId.params.i++;
@@ -36,11 +40,31 @@ const Detail = () => {
   const onToggle = () => {
     setToggle((prev) => !prev);
   };
+
+  const cardRef = React.useRef() as React.MutableRefObject<HTMLImageElement>;
+  const onDownloadBtn = () => {
+    const card = cardRef.current;
+    domtoimage.toBlob(card).then((blob) => {
+      saveAs(blob, 'img.png');
+    });
+  };
+
+  const onRemove = (clickedData: any) => {
+    SetData(
+      galleryData.renderings?.filter(
+        (itme: any) => itme._id !== clickedData._id
+      )
+    );
+    setData(galleryData);
+    console.log(galleryData);
+    navigate('/');
+  };
+
   return (
     <>
       <Top>
         <TopBtn onClick={() => navigate('/')}>x</TopBtn>
-        <DownloadBtn>
+        <DownloadBtn onClick={onDownloadBtn}>
           <AiOutlineDownload />
           다운로드
         </DownloadBtn>
@@ -48,9 +72,20 @@ const Detail = () => {
           <RiDeleteBinLine />
         </DeleteBtn>
       </Top>
-      {toggle && <DeleteModal Toggle={onToggle} />}
+      {toggle && (
+        <DeleteModal
+          onToggle={onToggle}
+          onRemove={onRemove}
+          clickedData={clickedData}
+        />
+      )}
       <ImgBox>
-        <Img src={clickedData?._id} alt='상세이미지' />
+        <Img
+          ref={cardRef}
+          className='img'
+          src={clickedData?._id}
+          alt='상세이미지'
+        />
       </ImgBox>
       <BtnBox>
         <ArrowBack onClick={onPrev}>

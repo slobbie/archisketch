@@ -1,19 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import App from "./App";
-import rootReducer from "./redux/reducers";
-
-const store = createStore(rootReducer, composeWithDevTools());
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import App from './App';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider store={store}>
+    <RecoilRoot>
       <App />
-    </Provider>
+    </RecoilRoot>
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

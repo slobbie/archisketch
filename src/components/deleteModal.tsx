@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { Toggle } from '../atiom';
 
-const DeleteModal = ({ Toggle }: any) => {
+const DeleteModal = ({ onToggle, onRemove, clickedData }: any) => {
   const onCloseModal = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target === e.currentTarget) {
-      Toggle();
+      onToggle();
     }
   };
   useEffect(() => {
@@ -19,6 +21,7 @@ const DeleteModal = ({ Toggle }: any) => {
       window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     };
   }, []);
+
   return (
     <Dim onClick={onCloseModal}>
       <ModalBox>
@@ -28,7 +31,7 @@ const DeleteModal = ({ Toggle }: any) => {
         />
         <P>확인</P>
         <Span>정말 이 이미지를 삭제 하시겠습니까?</Span>
-        <DeleteBtn>삭제</DeleteBtn>
+        <DeleteBtn onClick={() => onRemove(clickedData)}>삭제</DeleteBtn>
         <BackBtn onClick={onCloseModal}>돌아가기</BackBtn>
       </ModalBox>
     </Dim>
@@ -92,6 +95,7 @@ const DeleteBtn = styled.button`
   border-radius: 4px;
   background: #6db2c5;
   color: #fff;
+  cursor: pointer;
 `;
 
 const BackBtn = styled.button`
