@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { Toggle } from '../atiom';
 
 const DeleteModal = ({ onToggle, onRemove, clickedData }: any) => {
   const onCloseModal = (e: React.MouseEvent<HTMLElement>) => {
