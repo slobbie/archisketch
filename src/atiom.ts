@@ -1,26 +1,26 @@
-import { atom, selector } from 'recoil';
-import Data from '../src/data/dummyData.json';
+import { atom, selector } from "recoil";
+import Data from "../src/data/dummyData.json";
 
 export const FullDummyData = atom({
-  key: 'Fulldata',
+  key: "Fulldata",
   default: Data,
 });
 
 export const DummyData = atom({
-  key: 'data',
+  key: "data",
   default: Data.renderings,
 });
 
 export const Update: any = selector({
-  key: 'UpdataData',
+  key: "UpdataData",
   get: ({ get }) => {
     const Updata = get(DummyData);
-    localStorage.setItem('updataData', JSON.stringify(Updata));
+    localStorage.setItem("updataData", JSON.stringify(Updata));
     return Updata;
   },
 });
 
 export const Toggle = atom({
-  key: 'Toggle',
+  key: "Toggle",
   default: false,
 });

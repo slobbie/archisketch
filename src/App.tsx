@@ -1,9 +1,9 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import styled, { createGlobalStyle } from 'styled-components';
-import Detail from './components/detail';
-import Nav from './layout/Nav';
-import Home from './page/Home';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import styled, { createGlobalStyle } from "styled-components";
+import Detail from "./components/detail";
+import Nav from "./layout/Nav";
+import Home from "./page/Home";
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       <GlobalStyle />
       <Nav />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/detail/*' element={<Detail />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/detail/*" element={<Detail />} />
       </Routes>
     </Section>
   );
