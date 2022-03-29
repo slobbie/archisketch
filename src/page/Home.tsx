@@ -87,12 +87,19 @@ const Span = styled.span`
 const ImgContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  gap: 15px;
   justify-items: center;
+  @media only screen and (max-width: 1020px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media only screen and (max-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const Box = styled.div`
-  width: 330px;
+  max-width: 330px;
+  width: 100%;
   height: 190px;
   overflow: hidden;
   border-radius: 15px;
@@ -102,4 +109,5 @@ const Img = styled.img`
   background-image: cover;
   background-position: center center;
   width: 100%;
+  height: 100%;
 `;
