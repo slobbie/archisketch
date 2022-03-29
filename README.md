@@ -51,10 +51,8 @@ selector를 사용하여 Dummy Data를 받아오고 get 안에 업데이트된 D
 
 ```
 const onNext = () => {
-    if (matchId.params.i >= galleryData.length) {
       matchId.params.i++;
       navigate(`/detail/${matchId.params.i}`);
-    }
   };
 
   const onPrev = () => {
@@ -66,7 +64,6 @@ const onNext = () => {
 
 useMatch 에서 받아온 params.i 정보를 이용하여 다음버튼은 더해주고
 이전 버튼은 빼주어 컨트롤 했습니다.
-조건문을 걸어주고 현재 있는 데이터의 량을 넘어갈수 없게 구현했습니다.
 
 ---
 
