@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Nav = () => {
   return (
     <NavBar>
-      <Link to='/'>
+      <Link to="/">
         <Logo>archisketch</Logo>
       </Link>
     </NavBar>

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from "react";
+import styled from "styled-components";
 
 const DeleteModal = ({ onToggle, onRemove, clickedData }: any) => {
   const onCloseModal = (e: React.MouseEvent<HTMLElement>) => {
@@ -15,8 +15,8 @@ const DeleteModal = ({ onToggle, onRemove, clickedData }: any) => {
           width: 100%;`;
     return () => {
       const scrollY = document.body.style.top;
-      document.body.style.cssText = '';
-      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
     };
   }, []);
 
@@ -24,8 +24,8 @@ const DeleteModal = ({ onToggle, onRemove, clickedData }: any) => {
     <Dim onClick={onCloseModal}>
       <ModalBox>
         <ImgGif
-          src='https://resources.archisketch.com/editor/assets_test/img/pop-up/gallery_delete@2x.gif'
-          alt='삭제 gif'
+          src="https://resources.archisketch.com/editor/assets_test/img/pop-up/gallery_delete@2x.gif"
+          alt="삭제 gif"
         />
         <P>확인</P>
         <Span>정말 이 이미지를 삭제 하시겠습니까?</Span>

@@ -1,17 +1,17 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import styled from 'styled-components';
-import { Toggle } from '../atiom';
-import DummayData from '../data/dummyData.json';
-import arrayDataModel from '../model/dummydata-model';
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import styled from "styled-components";
+import { Toggle } from "../atiom";
+import DummayData from "../data/dummyData.json";
+import arrayDataModel from "../model/dummydata-model";
 
 interface DummyDatamodel {
   _id: string;
 }
 
 const Home = () => {
-  let UpdateData = JSON.parse(localStorage.getItem('updataData') || '');
+  let UpdateData = JSON.parse(localStorage.getItem("updataData") || "");
   const ToggleValue = useRecoilValue(Toggle);
   useEffect(() => {
     // console.log(DummayData);
@@ -32,7 +32,7 @@ const Home = () => {
               return (
                 <Link to={`/detail/${i}`} key={i}>
                   <Box>
-                    <Img src={item._id} alt='사진' />
+                    <Img src={item._id} alt="사진" />
                   </Box>
                 </Link>
               );
@@ -50,7 +50,7 @@ const Home = () => {
               return (
                 <Link to={`/detail/${i}`} key={i}>
                   <Box>
-                    <Img src={item._id} alt='사진' />
+                    <Img src={item._id} alt="사진" />
                   </Box>
                 </Link>
               );
@@ -90,6 +90,7 @@ const ImgContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
+  justify-items: center;
 `;
 
 const Box = styled.div`
