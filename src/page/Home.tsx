@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { Toggle, Update } from '../atiom';
-import DummayData from '../data/dummyData.json';
+import { FullDummyData, Toggle, Update } from '../atiom';
 import arrayDataModel from '../model/dummydata-model';
 
 interface DummyDatamodel {
@@ -12,11 +11,11 @@ interface DummyDatamodel {
 
 const Home = () => {
   const renderData = useRecoilValue(Update);
+  const Data = useRecoilValue(FullDummyData);
   let UpdateData = JSON.parse(localStorage.getItem('updataData') || '');
   const ToggleValue = useRecoilValue(Toggle);
 
   useEffect(() => {}, [renderData]);
-  useEffect(() => {}, [DummayData]);
   useEffect(() => {}, [UpdateData]);
   return (
     <Section>
@@ -41,11 +40,11 @@ const Home = () => {
       ) : (
         <>
           <Top>
-            <Span>{DummayData?.renderings.length}개의 랜더샷</Span>
+            <Span>{Data?.renderings.length}개의 랜더샷</Span>
             <Title>갤러리</Title>
           </Top>
           <ImgContainer>
-            {DummayData?.renderings.map((item: DummyDatamodel, i: number) => {
+            {Data?.renderings.map((item: DummyDatamodel, i: number) => {
               return (
                 <Link to={`/detail/${i}`} key={i}>
                   <Box>
