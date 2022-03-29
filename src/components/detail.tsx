@@ -9,21 +9,21 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import React from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { DummyData, Update } from '../atiom';
+import { DummyData, Toggle, Update } from '../atiom';
+import arrayDataModel from '../model/dummydata-model';
 
 const Detail = () => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState<boolean>(false);
   const galleryData = useRecoilValue<any>(Update);
-  // const data: any = useRecoilValue(DummyData);
   const SetData = useSetRecoilState(DummyData);
-  const [data, setData] = useRecoilState<any>(DummyData);
   const matchId: any = useMatch('/detail/:i');
+  const [toggleValue, setToggleValue] = useRecoilState(Toggle);
 
   const clickedData =
     matchId?.params.i &&
-    galleryData.renderings?.find(
-      (item: any, i: any) => i + '' === matchId.params.i
+    galleryData?.find(
+      (item: arrayDataModel, i: number) => i + '' === matchId.params.i
     );
 
   const onNext = () => {
@@ -49,14 +49,13 @@ const Detail = () => {
     });
   };
 
-  const onRemove = (clickedData: any) => {
+  const onRemove = (clickedData: arrayDataModel) => {
     SetData(
-      galleryData.renderings?.filter(
-        (itme: any) => itme._id !== clickedData._id
+      galleryData.filter(
+        (item: arrayDataModel, i: number) => i + '' !== matchId.params.i
       )
     );
-    setData(galleryData);
-    console.log(galleryData);
+    setToggleValue(true);
     navigate('/');
   };
 
@@ -76,14 +75,14 @@ const Detail = () => {
         <DeleteModal
           onToggle={onToggle}
           onRemove={onRemove}
-          clickedData={clickedData}
+          clickedData={matchId}
         />
       )}
       <ImgBox>
         <Img
           ref={cardRef}
           className='img'
-          src={clickedData?._id}
+          src={clickedData._id}
           alt='상세이미지'
         />
       </ImgBox>
@@ -132,6 +131,7 @@ const TopBtn = styled.button`
   border-radius: 5px;
   margin-right: auto;
   margin-left: 30px;
+  cursor: pointer;
 `;
 
 const BtnBox = styled.div`
