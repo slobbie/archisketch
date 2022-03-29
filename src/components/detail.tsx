@@ -8,8 +8,8 @@ import DeleteModal from './deleteModal';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import React from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { DummyData, Update } from '../atiom';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { DummyData, Toggle, Update } from '../atiom';
 import arrayDataModel from '../model/dummydata-model';
 
 const Detail = () => {
@@ -18,6 +18,7 @@ const Detail = () => {
   const galleryData = useRecoilValue<any>(Update);
   const SetData = useSetRecoilState(DummyData);
   const matchId: any = useMatch('/detail/:i');
+  const [toggleValue, setToggleValue] = useRecoilState(Toggle);
 
   const clickedData =
     matchId?.params.i &&
@@ -54,6 +55,7 @@ const Detail = () => {
         (item: arrayDataModel, i: number) => i + '' !== matchId.params.i
       )
     );
+    setToggleValue(true);
     navigate('/');
   };
 
