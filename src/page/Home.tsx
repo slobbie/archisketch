@@ -1,27 +1,22 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { Update } from '../atiom';
-
-interface DummyDatamodel {
-  _id: string;
-}
+import arrayDataModel from '../model/dummydata-model';
 
 const Home = () => {
-  const UpdateData = useRecoilValue(Update);
+  let Data = JSON.parse(localStorage.getItem('updataData') || '');
 
   useEffect(() => {
-    console.log(UpdateData);
-  }, [UpdateData]);
+    console.log(Data);
+  }, [Data]);
   return (
     <Section>
       <Top>
-        <Span>{UpdateData?.renderings.length}개의 랜더샷</Span>
+        <Span>{Data?.length}개의 랜더샷</Span>
         <Title>갤러리</Title>
       </Top>
       <ImgContainer>
-        {UpdateData?.renderings.map((item: DummyDatamodel, i: number) => {
+        {Data?.map((item: arrayDataModel, i: number) => {
           return (
             <Link to={`/detail/${i}`} key={i}>
               <Box>
