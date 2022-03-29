@@ -15,7 +15,7 @@ const Home = () => {
   let UpdateData = JSON.parse(localStorage.getItem('updataData') || '');
   const ToggleValue = useRecoilValue(Toggle);
   useEffect(() => {
-    // console.log(DummayData);
+    console.log(renderData);
   }, [DummayData]);
   useEffect(() => {
     // console.log(UpdateData);ㄴ
