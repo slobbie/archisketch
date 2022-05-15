@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { FullDummyData, Toggle, Update } from '../atiom';
+import { FullDummyData, Toggle, Update } from '../atom';
 import arrayDataModel from '../model/dummydata-model';
 
 interface DummyDatamodel {

@@ -9,7 +9,7 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import React from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { DummyData, Toggle, Update } from '../atiom';
+import { DummyData, Toggle, Update } from '../atom';
 import arrayDataModel from '../model/dummydata-model';
 
 const Detail = () => {
