@@ -12,7 +12,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path='/archisketch' element={<Home />} />
-        <Route path='/archisketch/detail/*' element={<Detail />} />
+        <Route path='/detail/*' element={<Detail />} />
       </Routes>
     </Section>
   );
