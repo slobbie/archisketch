@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/archisketch/static/js/main.5e8fc1d6.js",
+    "main.js": "/archisketch/static/js/main.df809b79.js",
     "index.html": "/archisketch/index.html",
-    "main.5e8fc1d6.js.map": "/archisketch/static/js/main.5e8fc1d6.js.map"
+    "main.df809b79.js.map": "/archisketch/static/js/main.df809b79.js.map"
   },
   "entrypoints": [
-    "static/js/main.5e8fc1d6.js"
+    "static/js/main.df809b79.js"
   ]
 }
