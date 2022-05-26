@@ -62,7 +62,7 @@ const Detail = () => {
   return (
     <>
       <Top>
-        <TopBtn onClick={() => navigate('/')}>x</TopBtn>
+        <TopBtn onClick={() => navigate('/archisketch')}>x</TopBtn>
         <DownloadBtn onClick={onDownloadBtn}>
           <AiOutlineDownload />
           다운로드
